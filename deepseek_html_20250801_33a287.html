@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Money Lab: Advanced Investing & Your Journey</title>
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --secondary: #9b59b6;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --highlight: #f1c40f;
+            --risk-low: #2ecc71;
+            --risk-med: #f1c40f;
+            --risk-high: #e74c3c;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 5px solid var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            background: white;
+            color: var(--primary);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .download-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            font-size: 2rem;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: rgba(142, 68, 173, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .callout {
+            background-color: rgba(52, 152, 219, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .callout h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .formula {
+            background-color: rgba(155, 89, 182, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: monospace;
+            border: 1px solid var(--secondary);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: #f5eef8;
+        }
+        
+        .case-study {
+            background-color: rgba(155, 89, 182, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px dashed var(--secondary);
+        }
+        
+        .case-study h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .scenario {
+            background-color: rgba(46, 204, 113, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--success);
+        }
+        
+        .scenario h4 {
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+        
+        .quick-check {
+            background-color: rgba(241, 196, 15, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .quick-check h4 {
+            color: var(--highlight);
+            margin-bottom: 15px;
+        }
+        
+        .real-world {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .real-world h4 {
+            color: #c0392b;
+            margin-bottom: 15px;
+        }
+        
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .flow-step {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .flow-step:after {
+            content: "↓";
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .flow-step:last-child:after {
+            display: none;
+        }
+        
+        .goal-garden {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .garden-plot {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            min-height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .garden-plot:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--secondary);
+        }
+        
+        .garden-plot h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .calculator {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .calculator h4 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .calculator input, .calculator select {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .calculator button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .calculator button:hover {
+            background-color: #2980b9;
+        }
+        
+        .quiz {
+            background-color: rgba(142, 68, 173, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .quiz h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+        
+        .quiz-options label {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .chart {
+            width: 100%;
+            height: 300px;
+            background-color: #f9f9f9;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            background-color: var(--secondary);
+            width: 30px;
+            transition: height 1s ease;
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .risk-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .risk-low {
+            background-color: var(--risk-low);
+            color: white;
+        }
+        
+        .risk-med {
+            background-color: var(--risk-med);
+            color: black;
+        }
+        
+        .risk-high {
+            background-color: var(--risk-high);
+            color: white;
+        }
+        
+        .warning {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .broker-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .broker-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            min-height: 180px;
+        }
+        
+        .broker-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--secondary);
+            z-index: 1;
+        }
+        
+        .timeline-step {
+            text-align: center;
+            width: 20%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-point {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 5px solid var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            .goal-garden, .broker-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-step {
+                width: 100%;
+                margin-bottom: 30px;
+                text-align: left;
+                display: flex;
+                align-items: center;
+            }
+            
+            .timeline-point {
+                margin: 0 15px 0 0;
+            }
+            
+            .timeline:before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">$</div>
+                <div>
+                    <h1>The Money Lab</h1>
+                    <p class="subtitle">Section 5: Advanced Investing & Your Journey</p>
+                </div>
+            </div>
+            <a href="#" class="download-btn">Download Journey Roadmap (PDF)</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>5.1 Alternative Investments</h2>
+            
+            <h3>REITs: Real Estate for Teens</h3>
+            
+            <div class="highlight">
+                <p>REITs (Real Estate Investment Trusts) let you invest in real estate without buying physical property. They trade like stocks!</p>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Aspect</th>
+                    <th>REIT</th>
+                    <th>Physical Property</th>
+                    <th>Teen Viability</th>
+                </tr>
+                <tr>
+                    <td>Minimum Investment</td>
+                    <td>$1-100/share</td>
+                    <td>20% down payment ($40k+)</td>
+                    <td><span class="risk-tag risk-low">REIT Accessible</span></td>
+                </tr>
+                <tr>
+                    <td>Management</td>
+                    <td>Professional</td>
+                    <td>Self-managed</td>
+                    <td><span class="risk-tag risk-low">REIT Better</span></td>
+                </tr>
+                <tr>
+                    <td>Liquidity</td>
+                    <td>High (stock exchange)</td>
+                    <td>Low (6+ months sale)</td>
+                    <td><span class="risk-tag risk-low">REIT Preferred</span></td>
+                </tr>
+                <tr>
+                    <td>Dividends</td>
+                    <td>4-8% annually</td>
+                    <td>Rental income</td>
+                    <td><span class="risk-tag risk-low">REIT Consistent</span></td>
+                </tr>
+                <tr>
+                    <td>Diversification</td>
+                    <td>Multiple properties</td>
+                    <td>Single property</td>
+                    <td><span class="risk-tag risk-low">REIT Advantage</span></td>
+                </tr>
+            </table>
+            
+            <div class="scenario">
+                <h4>Case Study: $500 in VNQ REIT</h4>
+                <p>Sarah (age 16) invested $500 from her babysitting savings in Vanguard Real Estate ETF (VNQ) in January 2021:</p>
+                
+                <ul>
+                    <li><strong>2021 Investment:</strong> $500 @ $94/share = 5.32 shares</li>
+                    <li><strong>2024 Value:</strong> $128.50/share × 5.32 shares = $685</li>
+                    <li><strong>Dividends Earned:</strong> $42 (average 3% yield)</li>
+                    <li><strong>Total Return:</strong> ($685 + $42) - $500 = $227 (45.4% return)</li>
+                </ul>
+                
+                <p><strong>Key Insight:</strong> REITs offer affordable real estate exposure with liquidity teens need.</p>
+            </div>
+            
+            <div class="callout">
+                <h4>TikTok Investment Challenge</h4>
+                <p>Join the #FractionalREIT challenge: Invest just $20 in a REIT and track it for 3 months. Post your progress!</p>
+                <ul>
+                    <li>Popular REITs: VNQ, O, AMT</li>
+                    <li>Platforms: Robinhood, Fidelity, Charles Schwab</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>5.2 Retirement Accounts for Teens</h2>
+            
+            <h3>Roth IRA: The Teen Superpower</h3>
+            
+            <table>
+                <tr>
+                    <th>Account Type</th>
+                    <th>Tax Treatment</th>
+                    <th>Withdrawal Age</th>
+                    <th>Teen Advantage</th>
+                </tr>
+                <tr>
+                    <td>Roth IRA</td>
+                    <td>Tax-free growth</td>
+                    <td>59.5+</td>
+                    <td>Massive compounding potential</td>
+                </tr>
+                <tr>
+                    <td>401(k)</td>
+                    <td>Tax-deferred</td>
+                    <td>59.5+</td>
+                    <td>Employer match (rare for teens)</td>
+                </tr>
+                <tr>
+                    <td>Brokerage</td>
+                    <td>Capital gains tax</td>
+                    <td>Any age</td>
+                    <td>Flexible for college funds</td>
+                </tr>
+            </table>
+            
+            <div class="case-study">
+                <h4>The Magic of Early Roth IRA Investing</h4>
+                <p>James (age 15) invests $3,000 from summer job earnings in a Roth IRA:</p>
+                
+                <ul>
+                    <li><strong>Investment:</strong> $3,000 in S&P 500 index fund</li>
+                    <li><strong>Annual Return:</strong> 7% (historical average)</li>
+                    <li><strong>Age 65 Value:</strong> $160,000 tax-free!</li>
+                </ul>
+                
+                <div class="calculator">
+                    <h4>Roth IRA Growth Calculator</h4>
+                    <div>
+                        <label>Initial Investment ($):</label>
+                        <input type="number" id="initial" value="3000">
+                    </div>
+                    <div>
+                        <label>Annual Contribution ($):</label>
+                        <input type="number" id="annual" value="1000">
+                    </div>
+                    <div>
+                        <label>Years Until Retirement:</label>
+                        <input type="number" id="years" value="50">
+                    </div>
+                    <div>
+                        <label>Estimated Annual Return (%):</label>
+                        <input type="number" id="return" value="7">
+                    </div>
+                    <button onclick="calculateRoth()">Calculate</button>
+                    <div id="rothResult" style="margin-top: 15px; font-weight: bold;"></div>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <h4>⚠️ Important Rules</h4>
+                <ul>
+                    <li>Teens can contribute only up to their <strong>earned income</strong> ($7,000 max in 2024)</li>
+                    <li>Parent/guardian must open a <strong>custodial Roth IRA</strong></li>
+                    <li>Early withdrawals may incur penalties except for education/first home</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>5.3 Investment Psychology</h2>
+            
+            <h3>Behavioral Biases in Investing</h3>
+            
+            <table>
+                <tr>
+                    <th>Bias</th>
+                    <th>Effect</th>
+                    <th>Mitigation Strategy</th>
+                    <th>Teen Example</th>
+                </tr>
+                <tr>
+                    <td>FOMO (Fear of Missing Out)</td>
+                    <td>Chasing trends</td>
+                    <td>Pre-set investment rules</td>
+                    <td>Buying crypto after 100% surge</td>
+                </tr>
+                <tr>
+                    <td>Loss Aversion</td>
+                    <td>Holding losers too long</td>
+                    <td>Stop-loss orders</td>
+                    <td>Keeping falling meme stocks</td>
+                </tr>
+                <tr>
+                    <td>Anchoring</td>
+                    <td>Fixating on past prices</td>
+                    <td>Regular fundamental reviews</td>
+                    <td>Refusing to sell stock at loss</td>
+                </tr>
+                <tr>
+                    <td>Confirmation Bias</td>
+                    <td>Seeking confirming information</td>
+                    <td>Seek opposing viewpoints</td>
+                    <td>Only following bullish analysts</td>
+                </tr>
+            </table>
+            
+            <div class="scenario">
+                <h4>Paper Trading Challenge</h4>
+                <p>Test your psychology with a $100,000 virtual portfolio:</p>
+                
+                <ul>
+                    <li><strong>Duration:</strong> 6 weeks</li>
+                    <li><strong>Benchmark:</strong> Beat S&P 500 by 2%</li>
+                    <li><strong>Weekly Reports:</strong> Analyze emotional decisions</li>
+                    <li><strong>Platforms:</strong> Investopedia Simulator, MarketWatch Virtual Stock Exchange</li>
+                </ul>
+                
+                <div class="quiz">
+                    <h4>Bias Self-Assessment Quiz</h4>
+                    <p>When your investment drops 20%, do you:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="bias" value="panic"> Panic and sell everything immediately</label>
+                        <label><input type="radio" name="bias" value="research"> Research why it dropped before deciding</label>
+                        <label><input type="radio" name="bias" value="buy"> Buy more because it's "on sale"</label>
+                        <label><input type="radio" name="bias" value="ignore"> Ignore it and come back in 6 months</label>
+                    </div>
+                    <button onclick="assessBias()">Analyze My Bias</button>
+                    <div id="biasResult" style="margin-top:15px; font-weight:bold;"></div>
+                </div>
+            </div>
+            
+            <div class="real-world">
+                <h4>Meme Stock Case Study: AMC (2021-2024)</h4>
+                <ul>
+                    <li><strong>Jan 2021:</strong> $2/share</li>
+                    <li><strong>Jun 2021:</strong> $72/share (+3,500%)</li>
+                    <li><strong>Jan 2024:</strong> $4.50/share (-94% from peak)</li>
+                </ul>
+                <p><strong>Psychology Lesson:</strong> FOMO drove prices to unsustainable levels. Investors who bought at peak lost most of their money.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>5.4 Launching Your Journey</h2>
+            
+            <h3>Custodial Account Setup Guide</h3>
+            
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="timeline-point">1</div>
+                    <div>
+                        <h4>Choose Platform</h4>
+                        <p>Fidelity, Schwab, or E*TRADE</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-point">2</div>
+                    <div>
+                        <h4>Parent Co-Sign</h4>
+                        <p>Online verification</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-point">3</div>
+                    <div>
+                        <h4>Fund Account</h4>
+                        <p>$50 minimum deposit</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-point">4</div>
+                    <div>
+                        <h4>Buy Investments</h4>
+                        <p>Fractional shares available</p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-point">5</div>
+                    <div>
+                        <h4>Monitor & Learn</h4>
+                        <p>Track performance monthly</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="broker-comparison">
+                <div class="broker-card">
+                    <h4>Fidelity Youth Account</h4>
+                    <ul>
+                        <li>$0 account fees</li>
+                        <li>$0 minimum deposit</li>
+                        <li>Fractional shares</li>
+                        <li>Parental controls</li>
+                        <li>⭐ Best for beginners</li>
+                    </ul>
+                </div>
+                <div class="broker-card">
+                    <h4>Charles Schwab</h4>
+                    <ul>
+                        <li>$0 account fees</li>
+                        <li>$0 minimum</li>
+                        <li>ATM fee rebates</li>
+                        <li>Research tools</li>
+                        <li>⭐ Best for banking+investing</li>
+                    </ul>
+                </div>
+                <div class="broker-card">
+                    <h4>Robinhood</h4>
+                    <ul>
+                        <li>$0 account fees</li>
+                        <li>$0 minimum</li>
+                        <li>Easy interface</li>
+                        <li>Crypto trading</li>
+                        <li>⚠️ Watch for risky behavior</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>5-Year Investment Plan Template</h3>
+            
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Goal</th>
+                    <th>Strategy</th>
+                    <th>Target</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Learn Basics</td>
+                    <td>Paper trade + $500 real</td>
+                    <td>+10% return</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Build Foundation</td>
+                    <td>Open Roth IRA + $100/month</td>
+                    <td>$1,500 portfolio</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Grow Portfolio</td>
+                    <td>$200/month + DRIP</td>
+                    <td>$5,000 value</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Diversify</td>
+                    <td>Add bonds/REITs</td>
+                    <td>3+ asset classes</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Optimize</td>
+                    <td>Tax-efficient strategies</td>
+                    <td>$10,000 portfolio</td>
+                </tr>
+            </table>
+            
+            <div class="success">
+                <h4>Protection Measures</h4>
+                <ul>
+                    <li><strong>SIPC Insurance:</strong> Protects up to $500,000 in brokerage accounts</li>
+                    <li><strong>FDIC Insurance:</strong> Protects up to $250,000 in cash deposits</li>
+                    <li><strong>Two-Factor Authentication:</strong> Always enable for security</li>
+                    <li><strong>Fraud Alerts:</strong> Set up account monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>The Money Lab - Financial Literacy Course</p>
+            <p>Created by Arav Mehta & Ahaan Nigam | © 2024 All Rights Reserved</p>
+            <p>Congratulations on completing The Money Lab!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Roth IRA Calculator
+        function calculateRoth() {
+            const initial = parseFloat(document.getElementById('initial').value);
+            const annual = parseFloat(document.getElementById('annual').value);
+            const years = parseInt(document.getElementById('years').value);
+            const returnRate = parseFloat(document.getElementById('return').value) / 100;
+            
+            let total = initial;
+            
+            for (let i = 1; i <= years; i++) {
+                total = total * (1 + returnRate) + annual;
+            }
+            
+            const formattedTotal = total.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            });
+            
+            document.getElementById('rothResult').innerHTML = `
+                After ${years} years, your Roth IRA will be worth: <br>
+                <span style="font-size:1.5rem;">${formattedTotal}</span>
+            `;
+        }
+        
+        // Bias Assessment
+        function assessBias() {
+            const selected = document.querySelector('input[name="bias"]:checked');
+            if (!selected) {
+                document.getElementById('biasResult').innerHTML = "Please select an answer!";
+                return;
+            }
+            
+            const bias = selected.value;
+            let result;
+            
+            switch(bias) {
+                case "panic":
+                    result = "⚠️ Loss Aversion Bias: You may panic sell during dips. Strategy: Set stop-loss orders in advance.";
+                    break;
+                case "research":
+                    result = "✅ Rational Approach: You make decisions based on research. Keep up the disciplined approach!";
+                    break;
+                case "buy":
+                    result = "⚠️ Overconfidence Bias: You might buy too aggressively. Strategy: Dollar-cost average instead.";
+                    break;
+                case "ignore":
+                    result = "✅ Long-Term Mindset: You understand market fluctuations. Perfect for buy-and-hold investing!";
+                    break;
+                default:
+                    result = "Please select an option";
+            }
+            
+            document.getElementById('biasResult').innerHTML = result;
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year for copyright
+            document.querySelector('footer p:nth-child(2)').innerHTML = 
+                `Created by Arav Mehta & Ahaan Nigam | © ${new Date().getFullYear()} All Rights Reserved`;
+        });
+    </script>
+</body>
+</html>
